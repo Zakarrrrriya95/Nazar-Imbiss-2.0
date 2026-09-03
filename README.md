@@ -4,7 +4,7 @@ Schulprojekt von Artur Nuraliev, Klasse KA251
 Friedrich-List-Berufskolleg, 2024/2025
 
 ## Beschreibung
-Offizielle Website für das Restaurant Nazar Imbiss & Bäckerei in Bad Godesberg.  
+Nicht offizielle Website für das Restaurant Nazar Imbiss & Bäckerei in Bad Godesberg.  
 Entwickelt mit HTML5, CSS3 und Vanilla JavaScript.
 
 ## Funktionen
