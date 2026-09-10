@@ -242,28 +242,36 @@ h2::after {
     margin-bottom: 0;
 }
 
-.item-name {
+.item-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.item-name-price {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     gap: 0.5rem;
-    font-weight: 600;
-    color: var(--dark-brown);
-    font-size: 1.1rem;
 }
 
-.item-description {
-    font-size: 0.95rem;
-    color: #888;
-    margin-top: 0.3rem;
+.item-name {
+    font-weight: 600;
+    color: var(--dark-brown);
+    font-size: 1.05rem;
 }
 
 .item-price {
     color: var(--terracotta);
-    font-weight: 600;
-    font-size: 1.1rem;
+    font-weight: 700;
+    font-size: 1.05rem;
     white-space: nowrap;
     flex-shrink: 0;
+}
+
+.item-description {
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 0.2rem;
 }
 
 /* ==========================================
