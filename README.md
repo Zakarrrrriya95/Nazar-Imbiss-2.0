@@ -1,7 +1,6 @@
 # Nazar Imbiss & Bäckerei – Website
 
-Schulprojekt von Artur Nuraliev, Klasse KA251  
-Friedrich-List-Berufskolleg, 2024/2025
+Schulprojekt von Anonym 
 
 ## Beschreibung
 Nicht offizielle Website für das Restaurant Nazar Imbiss & Bäckerei in Bad Godesberg.  
