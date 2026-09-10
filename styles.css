@@ -243,6 +243,10 @@ h2::after {
 }
 
 .item-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
     font-weight: 600;
     color: var(--dark-brown);
     font-size: 1.1rem;
@@ -257,8 +261,9 @@ h2::after {
 .item-price {
     color: var(--terracotta);
     font-weight: 600;
-    float: right;
     font-size: 1.1rem;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 /* ==========================================
