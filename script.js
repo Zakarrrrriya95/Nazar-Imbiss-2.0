@@ -85,7 +85,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             showMessage('Vielen Dank für Ihre Nachricht! Wir werden uns bald bei Ihnen melden.', 'success');
             contactForm.reset();
-            console.log('Formular-Daten:', formData);
         });
     }
 
@@ -133,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-    document.querySelectorAll('.menu-category, .info-card').forEach(card => {
+    document.querySelectorAll('.about-card, .award-card, .info-card').forEach(card => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(20px)';
         card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -157,133 +156,30 @@ document.addEventListener('DOMContentLoaded', function() {
             isOpen = currentTime >= 12 * 60 && currentTime < 22 * 60;
         }
 
-        // Zum Aktivieren: Kommentar entfernen
-        // const statusElement = document.createElement('div');
-        // statusElement.textContent = isOpen ? '🟢 Geöffnet' : '🔴 Geschlossen';
-        // document.body.appendChild(statusElement);
+        const statusBadge = document.createElement('div');
+        statusBadge.style.cssText = `
+            position: fixed;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            background: ${isOpen ? '#28a745' : '#dc3545'};
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 999;
+            font-family: 'Lora', serif;
+        `;
+        statusBadge.textContent = isOpen ? '🟢 Jetzt geöffnet' : '🔴 Aktuell geschlossen';
+        document.body.appendChild(statusBadge);
     }
 
     checkOpenStatus();
 
     console.log('%c Nazar Imbiss Website geladen!', 'color: #C85E3F; font-size: 16px; font-weight: bold;');
-    console.log('Entwickelt mit Liebe für Nazar Imbiss Bad Godesberg');
-
 });
 
-// ==========================================
-// Lazy Loading für Bilder
-// ==========================================
-if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                if (img.dataset.src) {
-                    img.src = img.dataset.src;
-                    img.classList.add('loaded');
-                    observer.unobserve(img);
-                }
-            }
-        });
-    });
-
-    document.querySelectorAll('img[data-src]').forEach(img => {
-        imageObserver.observe(img);
-    });
-}
-
-// ==========================================
-// Warenkorb
-// ==========================================
-(function() {
-    let cart = [];
-
-    const cartBtn     = document.getElementById('cart-btn');
-    const cartSidebar = document.getElementById('cart-sidebar');
-    const cartOverlay = document.getElementById('cart-overlay');
-    const cartClose   = document.getElementById('cart-close');
-    const cartItemsEl = document.getElementById('cart-items');
-    const cartCount   = document.getElementById('cart-count');
-    const cartTotal   = document.getElementById('cart-total-price');
-
-    function openCart() {
-        cartSidebar.classList.add('open');
-        cartOverlay.classList.add('open');
-    }
-
-    function closeCart() {
-        cartSidebar.classList.remove('open');
-        cartOverlay.classList.remove('open');
-    }
-
-    cartBtn.addEventListener('click', openCart);
-    cartClose.addEventListener('click', closeCart);
-    cartOverlay.addEventListener('click', closeCart);
-
-    function addToCart(name, price) {
-        const existing = cart.find(i => i.name === name);
-        if (existing) {
-            existing.qty++;
-        } else {
-            cart.push({ name, price: parseFloat(price), qty: 1 });
-        }
-        renderCart();
-        openCart();
-    }
-
-    function changeQty(name, delta) {
-        const item = cart.find(i => i.name === name);
-        if (!item) return;
-        item.qty += delta;
-        if (item.qty <= 0) cart = cart.filter(i => i.name !== name);
-        renderCart();
-    }
-
-    function renderCart() {
-        const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
-        const count = cart.reduce((sum, i) => sum + i.qty, 0);
-
-        cartCount.textContent = count;
-        cartTotal.textContent = total.toFixed(2).replace('.', ',') + ' €';
-
-        if (cart.length === 0) {
-            cartItemsEl.innerHTML = '<p class="cart-empty">Ihr Warenkorb ist leer.</p>';
-            return;
-        }
-
-        cartItemsEl.innerHTML = cart.map(item => `
-            <div class="cart-item">
-                <div class="cart-item-name">${item.name}</div>
-                <div class="cart-item-controls">
-                    <button class="cart-qty-btn" data-name="${item.name}" data-delta="-1">−</button>
-                    <span class="cart-qty">${item.qty}</span>
-                    <button class="cart-qty-btn" data-name="${item.name}" data-delta="1">+</button>
-                </div>
-                <div class="cart-item-price">${(item.price * item.qty).toFixed(2).replace('.', ',')} €</div>
-            </div>
-        `).join('');
-
-        cartItemsEl.querySelectorAll('.cart-qty-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                changeQty(btn.dataset.name, parseInt(btn.dataset.delta));
-            });
-        });
-    }
-
-    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            addToCart(btn.dataset.name, btn.dataset.price);
-        });
-    });
-
-    document.querySelector('.cart-order-btn').addEventListener('click', () => {
-        if (cart.length === 0) return;
-        alert('Vielen Dank für Ihre Bestellung! Wir bereiten alles vor.');
-        cart = [];
-        renderCart();
-        closeCart();
-    });
-})();
 // ==========================================
 // Cookie Banner Funktionalität
 // ==========================================
@@ -292,11 +188,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const acceptBtn = document.getElementById('cookie-accept');
     const declineBtn = document.getElementById('cookie-decline');
 
-    // Check if user has already made a choice
     const cookieChoice = localStorage.getItem('nazar_cookie_consent');
 
     if (!cookieChoice) {
-        // Show banner with a subtle delay for better UX
         setTimeout(() => {
             cookieBanner.classList.add('show');
         }, 1000);

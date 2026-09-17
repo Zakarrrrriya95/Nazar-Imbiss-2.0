@@ -820,3 +820,152 @@ footer a:hover {
         width: 100%;
     }
 }
+/* ==========================================
+   Anruf CTA Button (Willkommen)
+========================================== */
+.call-cta-btn {
+    display: inline-block;
+    margin-top: 2rem;
+    background-color: var(--terracotta);
+    color: white;
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    font-family: 'Lora', serif;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(200, 94, 63, 0.3);
+}
+
+.call-cta-btn:hover {
+    background-color: var(--deep-red);
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   Über uns Grid
+========================================== */
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.about-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    border-left: 4px solid var(--terracotta);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.about-card h3 {
+    color: var(--terracotta);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+/* ==========================================
+   Wir lieben was wir tun
+========================================== */
+.wir-lieben {
+    background: var(--warm-cream);
+    border-radius: 12px;
+    padding: 2.5rem;
+    margin-top: 1rem;
+}
+
+.wir-lieben h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--dark-brown);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--terracotta);
+}
+
+.wir-lieben-content p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--dark-brown);
+}
+
+.highlight-text {
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--terracotta);
+    font-weight: 600;
+    color: var(--terracotta) !important;
+}
+
+/* ==========================================
+   Auszeichnungen Grid
+========================================== */
+.awards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.award-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    border-top: 4px solid var(--terracotta);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.award-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.award-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.award-card p {
+    font-size: 0.95rem;
+    color: var(--dark-brown);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.award-source {
+    font-size: 0.8rem;
+    color: #888;
+    font-style: italic;
+}
+
+/* ==========================================
+   Responsive Anpassungen
+========================================== */
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .awards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .call-cta-btn {
+        display: block;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .awards-grid {
+        grid-template-columns: 1fr;
+    }
+}
