@@ -1,7 +1,11 @@
 /* ==========================================
    Nazar Imbiss - Stylesheet
    ========================================== */
-
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
 :root {
     --terracotta: #E8001C;
     --deep-olive: #CC0018;
